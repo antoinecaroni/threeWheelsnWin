@@ -1,2 +1,27 @@
-<h1>Vehicles#index</h1>
-<p>Find me in app/views/vehicles/index.html.erb</p>
+<div class="container">
+  <h1> Roulez petits bolides ! </h1>
+  <div class="row">
+
+    <% @vehicles.each do |vehicle| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card-container">
+          <div class="card" >
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%="https://source.unsplash.com/featured/?cars,${vehicle.name}"%>);">
+              <span class="card-category"></span>
+              <%= link_to("", vehicle_path(vehicle), class: "card-link")%>
+            </div>
+
+            <div class="card-footer">
+              <h2><%=vehicle.name %></h2>
+              <div class="card-description">
+                <h3><%= vehicle.price.fdiv 100 %>$</p>
+                <h3><%= vehicle.seats %> seats</h3>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    <%end %>
+  </div>
+</div>
