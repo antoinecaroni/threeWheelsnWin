@@ -11,7 +11,7 @@
     </div>
 
     <div class="info-photo">
-      <%=image_tag @vehicle.photo, height: 446 %>
+      <%=cl_image_tag @vehicle.photo, height: 446 %>
     </div>
   </div>
 
@@ -26,7 +26,7 @@
     </div>
 
     <div class="user-profile-car">
-      <%=image_tag @vehicle.profile.photo, class: "avatar-show" %>
+      <%=cl_image_tag @vehicle.profile.photo, class: "avatar-show" %>
       <%= @vehicle.profile.first_name %>
     </div>
 
