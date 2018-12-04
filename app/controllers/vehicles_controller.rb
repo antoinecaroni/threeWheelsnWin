@@ -1,5 +1,6 @@
 class VehiclesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
+  skip_before_action :check_profile, only: :index
   before_action :set_vehicle, only: :show
 
   def index
