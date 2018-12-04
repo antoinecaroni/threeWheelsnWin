@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :check_profile
   include Pundit
 
   # Pundit: white-list approach.
@@ -12,6 +13,12 @@ class ApplicationController < ActionController::Base
   def user_not_authorized
     flash[:alert] = "You are not authorized to perform this action."
     redirect_to(root_path)
+  end
+
+  def check_profile
+    unless (current_user && current_user.profile) || params[:controller] =~ /devise/
+      redirect_to "/profiles/new?url=#{request.url}"
+    end
   end
 
   def configure_permitted_parameters

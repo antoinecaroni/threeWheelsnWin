@@ -1,0 +1,11 @@
+<%= simple_form_for @profile do |f| %>
+  <%= f.input :first_name %>
+  <%= f.input :last_name %>
+  <%= f.input :photo %>
+  <%= f.input :photo_cache, as: :hidden %>
+  <%= f.input :address_street %>
+  <%= f.input :address_city %>
+  <%= f.input :address_zipcode %>
+  <%= f.button :submit %>
+  <input type="text" name="url" value="<%= @url %>" hidden>
+<% end %>
