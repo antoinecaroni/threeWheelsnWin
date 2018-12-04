@@ -2,6 +2,34 @@
   <div class="banner-content">
     <h1></h1>
     <h2>Best place to find a 3 wheels vehicle</h2>
-    <%=link_to %>
+     <a href="vehicles" class="btn btn-primary btn-lg">See more</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1> Nos nouveaux bolides !</h1>
+  <div class="row">
+    <% @vehicles.sample(3).each do |vehicle| %>
+      <div class="col-xs-12 col-sm-4">
+        <div class="card-container">
+          <div class="card" >
+
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= vehicle.photo %>);">
+              <img class="avatar" src="#">
+              <%= link_to("", vehicle_path(vehicle), class: "card-link")%>
+            </div>
+
+            <div class="card-footer">
+              <h2><%= vehicle.name %></h2>
+              <div class="card-description">
+                <h3><%= vehicle.price.fdiv 100 %>$</p>
+                <h3><%= vehicle.seats %> seats</h3>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
