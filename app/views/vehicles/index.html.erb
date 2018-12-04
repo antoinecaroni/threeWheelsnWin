@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 <div class="container-index">
   <h1> Roulez petits bolides ! </h1>
+=======
+<div class="container">
+  <h1> Three wheels, what else? </h1>
+>>>>>>> master
   <div class="row">
 
     <% @vehicles.each do |vehicle| %>
@@ -7,7 +12,7 @@
         <div class="card-container">
           <div class="card" >
             <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= vehicle.photo %>);">
-              <%= image_tag vehicle.profile.photo, class: "card-avatar" %>
+              <%= cl_image_tag vehicle.profile.photo, class: "card-avatar" %>
               <%= link_to("", vehicle_path(vehicle), class: "card-link")%>
             </div>
 

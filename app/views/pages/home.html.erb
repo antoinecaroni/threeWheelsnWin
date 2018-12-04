@@ -14,8 +14,8 @@
         <div class="card-container">
           <div class="card" >
 
-            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= vehicle.photo %>);">
-              <%= image_tag vehicle.profile.photo, class: "card-avatar" %>
+            <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= cl_image_path vehicle.photo %>);">
+              <%= cl_image_tag vehicle.profile.photo, class: "card-avatar" %>
               <%= link_to("", vehicle_path(vehicle), class: "card-link")%>
             </div>
 

@@ -29,8 +29,10 @@ while i < 10
     address_street: Faker::Address.street_address,
     address_city: Faker::Address.city,
     address_zipcode: Faker::Address.zip_code,
-    photo: Faker::Avatar.image
     )
+  profile.remote_photo_url = "https://loremflickr.com/320/240/avatar/?rand=#{i}"
+  p profile
+  profile.save!
   2.times do
     vehicle = Vehicle.create!(name: Faker::Vehicle.make_and_model,
       type: Type.all.sample,
@@ -57,5 +59,7 @@ end
 
 # Adding pictures to vehicles
 Vehicle.all.each_with_index do |vehicle, i|
-  vehicle.update(photo: "https://loremflickr.com/1000/800/vehicle/?rand=#{i}")
+  vehicle.remote_photo_url = "https://loremflickr.com/1000/800/vehicle/?rand=#{i}"
+  vehicle.save!
+  p vehicle
 end
