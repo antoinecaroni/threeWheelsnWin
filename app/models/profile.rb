@@ -8,4 +8,5 @@ class Profile < ApplicationRecord
   validates :address_city, presence: true
   validates :address_zipcode, presence: true
   validates :user_id, presence: true
+  mount_uploader :photo, PhotoUploader
 end
