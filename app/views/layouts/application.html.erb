@@ -11,6 +11,8 @@
   </head>
   <body>
     <%= render 'shared/navbar' %>
+    <!-- app/views/layouts/application.html.erb -->
+    <%= render 'shared/flashes' %>
     <%= yield %>
     <%= javascript_include_tag 'application' %>
     <%= javascript_pack_tag 'application' %>
