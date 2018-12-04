@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://files.slack.com/files-pri/T02NE0241-FEHUUMGMS/banner_2.jpg');">
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_path "img_banner.jpg" %>);">
   <div class="banner-content">
     <h1></h1>
     <h2>Best place to find a 3 wheels vehicle</h2>
@@ -15,7 +15,7 @@
           <div class="card" >
 
             <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= vehicle.photo %>);">
-              <img class="avatar" src="profile.photo">
+              <%= image_tag vehicle.profile.photo, class: "card-avatar" %>
               <%= link_to("", vehicle_path(vehicle), class: "card-link")%>
             </div>
 
