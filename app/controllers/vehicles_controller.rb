@@ -12,17 +12,19 @@ class VehiclesController < ApplicationController
 
   def new
     @vehicle = Vehicle.new
-    # authorize @vehicle
+    authorize @vehicle
   end
 
   def create
     @vehicle = Vehicle.new(set_params)
+    authorize @vehicle
+    @vehicle.price = @vehicle.price * 100
+    @vehicle.profile = current_user.profile
     if @vehicle.save
-      redirect_to vehicle_path(@vehicle)
+      redirect_to vehicles_path
     else
       render :new
     end
-    authorize @vehicle
   end
 
   def edit
