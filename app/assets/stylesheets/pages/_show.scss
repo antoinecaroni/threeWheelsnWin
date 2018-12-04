@@ -1,0 +1,48 @@
+.car .info {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.car .info-generales {
+  background-color: #E9E9E9;
+  padding: 100px;
+}
+
+.footer-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .footer-price {
+    padding-right: 50px;
+    padding-left: 50px;
+    border-left: solid 1px lightgrey;
+  }
+}
+
+.description-car {
+  display: flex;
+  padding-left: 200px;
+  padding-right: 200px;
+  justify-content: space-around;
+  margin: 10px auto
+}
+
+.footer-car {
+  background: #F4F4F4;
+  border: solid 1px lightgrey;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  height: 100px;
+  padding: 0px 50px;
+  color: rgba(0,0,0,0.3);
+  background-attachment: scroll;
+  position: fixed;
+  background-position: 0% 0%;
+  bottom: 0pt;
+  left: 0pt;
+}
+
+

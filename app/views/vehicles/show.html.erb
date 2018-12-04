@@ -1,2 +1,37 @@
-<h1>Vehicles#show</h1>
-<p>Find me in app/views/vehicles/show.html.erb</p>
+<div class="car">
+
+  <div class="info">
+    <div class="info-generales">
+      <h1><%= @vehicle.type.name %></h1>
+      <h2><%= @vehicle.name %></h2>
+    </div>
+
+    <div class="info-photo">
+      <%= @vehicle.photo %>
+    </div>
+  </div>
+
+  <div class="description-car">
+    <div>
+      <h3><%= @vehicle.description %></h3>
+      <h4><%= @vehicle.price.fdiv 100 %> euros</h4>
+      <h4><%= @vehicle.seats %> seat(s)</h4>
+    </div>
+    <div>
+      <%= @vehicle.profile.first_name %> <%= @vehicle.profile.last_name %>
+    </div>
+  </div>
+</div>
+
+<div class="footer-car">
+  <div class="footer-description">
+    <%= image_tag "logo_white_mini.png", height: 50 %>
+    <h3><%= @vehicle.name %></h3>
+  </div>
+  <div class="footer-link">
+    <div class="footer-price">
+      <h3><%= @vehicle.price.fdiv 100 %> euros/jours</h3>
+    </div>
+    <a href="" class="btn btn-success"> Reserver </a>
+  </div>
+</div>
