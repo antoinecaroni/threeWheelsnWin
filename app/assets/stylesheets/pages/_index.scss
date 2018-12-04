@@ -1,7 +1,8 @@
 // Import page-specific CSS files here.
 @import "home";
+@import "show";
 
-h1 {
+.container-index h1 {
   text-align: center;
   padding-top: 10px;
 }

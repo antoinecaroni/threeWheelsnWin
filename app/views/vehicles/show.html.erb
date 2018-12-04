@@ -1,2 +1,47 @@
-<h1>Vehicles#show</h1>
-<p>Find me in app/views/vehicles/show.html.erb</p>
+<div class="car">
+
+  <div class="info">
+    <div class="info-generales">
+      <h1><%= @vehicle.type.name %></h1>
+      <h2><%= @vehicle.name %></h2>
+      <p><% @vehicle.seats.times do %>
+        <i class="fas fa-male"></i>
+      <% end %>
+      <p><i class="fas fa-euro-sign"></i>  <%= @vehicle.price.fdiv 100 %></p>
+    </div>
+
+    <div class="info-photo">
+      <%=cl_image_tag @vehicle.photo, height: 446 %>
+    </div>
+  </div>
+
+  <div class="description-car">
+
+    <div class="carac">
+      <h3><%= @vehicle.description %></h3>
+      <div class="details-car">
+        <h4><%= @vehicle.price.fdiv 100 %> euros</h4>
+        <h4><%= @vehicle.seats %> seat(s)</h4>
+      </div>
+    </div>
+
+    <div class="user-profile-car">
+      <%=cl_image_tag @vehicle.profile.photo, class: "avatar-show" %>
+      <%= @vehicle.profile.first_name %>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="footer-car">
+  <div class="footer-description">
+    <h3><%= @vehicle.name %></h3>
+  </div>
+  <div class="footer-link">
+    <div class="footer-price">
+      <h3><%= @vehicle.price.fdiv 100 %> euros/days</h3>
+    </div>
+    <a href="#" class="btn btn-success"> Book now </a>
+  </div>
+</div>
