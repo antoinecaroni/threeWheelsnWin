@@ -4,34 +4,44 @@
     <div class="info-generales">
       <h1><%= @vehicle.type.name %></h1>
       <h2><%= @vehicle.name %></h2>
+      <p><% @vehicle.seats.times do %>
+        <i class="fas fa-male"></i>
+      <% end %>
+      <p><i class="fas fa-euro-sign"></i>  <%= @vehicle.price.fdiv 100 %></p>
     </div>
 
     <div class="info-photo">
-      <%= @vehicle.photo %>
+      <%=image_tag @vehicle.photo, height: 446 %>
     </div>
   </div>
 
   <div class="description-car">
-    <div>
+
+    <div class="carac">
       <h3><%= @vehicle.description %></h3>
-      <h4><%= @vehicle.price.fdiv 100 %> euros</h4>
-      <h4><%= @vehicle.seats %> seat(s)</h4>
+      <div class="details-car">
+        <h4><%= @vehicle.price.fdiv 100 %> euros</h4>
+        <h4><%= @vehicle.seats %> seat(s)</h4>
+      </div>
     </div>
-    <div>
-      <%= @vehicle.profile.first_name %> <%= @vehicle.profile.last_name %>
+
+    <div class="user-profile-car">
+      <%=image_tag @vehicle.profile.photo, class: "avatar-show" %>
+      <%= @vehicle.profile.first_name %>
     </div>
+
   </div>
+
 </div>
 
 <div class="footer-car">
   <div class="footer-description">
-    <%= image_tag "logo_white_mini.png", height: 50 %>
     <h3><%= @vehicle.name %></h3>
   </div>
   <div class="footer-link">
     <div class="footer-price">
-      <h3><%= @vehicle.price.fdiv 100 %> euros/jours</h3>
+      <h3><%= @vehicle.price.fdiv 100 %> euros/days</h3>
     </div>
-    <a href="" class="btn btn-success"> Reserver </a>
+    <a href="#" class="btn btn-success"> Book now </a>
   </div>
 </div>

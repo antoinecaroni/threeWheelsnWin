@@ -1,12 +1,19 @@
+.car {
+  margin-bottom: 100px;
+}
 .car .info {
   display: flex;
   justify-content: center;
   margin: 20px;
-}
+  .info-generales {
+    background-color: #E9E9E9;
+    padding: 100px;
+    margin-right: 10px
+  }
+  .info-photo {
 
-.car .info-generales {
-  background-color: #E9E9E9;
-  padding: 100px;
+    margin-left: 10px;
+  }
 }
 
 .footer-link {
@@ -22,11 +29,35 @@
 
 .description-car {
   display: flex;
-  padding-left: 200px;
-  padding-right: 200px;
+  width: 66%;
   justify-content: space-around;
-  margin: 10px auto
+  margin: 10px auto;
+  .carac {
+    margin-right: 10px;
+    .details-car {
+      display: flex;
+      justify-content: space-around;
+      h4 {
+        font-weight: bolder;
+      }
+
+    }
+  }
+  .user-profile-car {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 30px;
+    margin-left: 10px;
+    border-left: solid 1px lightgrey
+  }
 }
+
+.avatar-show {
+  height: 50px;
+  border-radius: 50%;
+}
+
 
 .footer-car {
   background: #F4F4F4;

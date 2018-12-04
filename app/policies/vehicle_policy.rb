@@ -3,6 +3,10 @@ class VehiclePolicy < ApplicationPolicy
     true
   end
 
+  def show?
+    true
+  end
+
   def destroy?
     record.profile.user == user
   end
