@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
 
   resources :vehicles do
-    resources :bookings, only: [:create, :delete]
-    resources :reviews, only: :create
+    resources :bookings, only: [:create, :delete] do
+      resources :reviews, only: :create
+    end
   end
   get 'dashboards/mybookings'
   get 'dashboards/myvehicles'

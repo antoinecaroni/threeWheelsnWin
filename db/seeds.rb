@@ -1,4 +1,4 @@
-U# This file should contain all the record creation needed to seed the database with its default values.
+# This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 # Examples:
@@ -28,7 +28,8 @@ while i < 10
     last_name: Faker::Name.last_name,
     address_street: Faker::Address.street_address,
     address_city: Faker::Address.city,
-    address_zipcode: Faker::Address.zip_code
+    address_zipcode: Faker::Address.zip_code,
+    photo: Faker::Avatar.image
     )
   2.times do
     vehicle = Vehicle.create!(name: Faker::Vehicle.make_and_model,
@@ -54,3 +55,7 @@ while i < 10
   i += 1
 end
 
+# Adding pictures to vehicles
+Vehicle.all.each_with_index do |vehicle, i|
+  vehicle.update(photo: "https://loremflickr.com/1000/800/vehicle/?rand=#{i}")
+end
