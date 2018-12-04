@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'profiles/new'
   get 'profiles/edit'
   resources :vehicles do
-    resources :bookings, only: [:create, :delete] do
+    resources :bookings, only: [:new, :create, :delete] do
       resources :reviews, only: :create
     end
   end
