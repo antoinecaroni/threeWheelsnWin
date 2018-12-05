@@ -5,11 +5,15 @@ class BookingsController < ApplicationController
   end
 
   def create
-    @booking = Booking.new
+    @booking = Booking.new(set_params)
     authorize @booking
   end
 
   def delete
+  end
+
+  def set_params
+
   end
 
   def set_booking
