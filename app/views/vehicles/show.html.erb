@@ -42,6 +42,6 @@
     <div class="footer-price">
       <h3><%= @vehicle.price.fdiv 100 %> euros/days</h3>
     </div>
-    <a href="#" class="btn btn-success"> Book now </a>
+    <%= link_to("Book me", new_vehicle_booking_path(@vehicle), class: "btn btn-success btn-lg")%>
   </div>
 </div>
