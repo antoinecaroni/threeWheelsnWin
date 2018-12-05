@@ -1,0 +1,5 @@
+<div class="map-window">
+  <h3><%= link_to vehicle.name, vehicle_path(vehicle) %></h3>
+  <p><%= vehicle.type.name %></p>
+  <%= cl_image_tag vehicle.profile.photo, crop: :fill, alt: vehicle.profile.first_name, class: "avatar-small" %>
+</div>
