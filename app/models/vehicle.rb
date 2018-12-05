@@ -12,4 +12,16 @@ class Vehicle < ApplicationRecord
   validates :address_city, presence: true
   validates :address_zipcode, presence: true
   mount_uploader :photo, PhotoUploader
+  geocoded_by :address
+  after_validation :geocode, if: :change_to_address?
+
+  def address
+    [address_street, address_city, address_zipcode].join(', ')
+  end
+
+  private
+
+  def change_to_address?
+    will_save_change_to_address_city? || will_save_change_to_address_zipcode? || will_save_change_to_address_street?
+  end
 end

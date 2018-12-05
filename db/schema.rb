@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_03_144100) do
+ActiveRecord::Schema.define(version: 2018_12_05_104636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,6 +81,8 @@ ActiveRecord::Schema.define(version: 2018_12_03_144100) do
     t.string "address_zipcode"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
     t.index ["profile_id"], name: "index_vehicles_on_profile_id"
     t.index ["type_id"], name: "index_vehicles_on_type_id"
   end

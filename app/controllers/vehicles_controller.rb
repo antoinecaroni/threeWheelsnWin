@@ -4,11 +4,26 @@ class VehiclesController < ApplicationController
   before_action :set_vehicle, only: :show
 
   def index
-    @vehicles = policy_scope(Vehicle).order(created_at: :desc)
+    @vehicles = policy_scope(Vehicle).order(created_at: :desc).where.not(latitude: nil, longitude: nil)
+
+    @markers = @vehicles.map do |vehicle|
+      {
+        lng: vehicle.longitude,
+        lat: vehicle.latitude,
+        infoWindow: { content: render_to_string(partial: "/vehicles/map_window", locals: { vehicle: vehicle }) }
+      }
+    end
   end
 
   def show
     authorize @vehicle
+    @markers = [
+      {
+        lng: @vehicle.longitude,
+        lat: @vehicle.latitude,
+        infoWindow: { content: render_to_string(partial: "/vehicles/map_window", locals: { vehicle: @vehicle }) }
+      }
+    ]
   end
 
   def new
