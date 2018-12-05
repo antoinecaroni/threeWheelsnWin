@@ -1,8 +1,24 @@
 <div class="tabs">
-  <%= link_to("My Bookings", dashboards_mybookings_path, class: "tab" %>
-
+  <%= link_to("My Bookings", dashboards_mybookings_path, class: "tab")%>
   <%= link_to("My Vehicles", dashboards_myvehicles_path, class: "tab")%>
+   <%= link_to("My Bookings Vehicle", dashboards_myvehiclestobook_path, class: "tab active")%>
+</div>
 
-  <%= link_to("My Bookings Vehicle", dashboards_myvehiclestobook_path, class: "tab active")%>
+<div class="container">
+  <div>
+    <% @vehicles.each do |vehicle| %>
+      <h3><%= vehicle.name %></h3>
+      <% vehicle.bookings.each do |booking| %>
+        <ul class="list-inline">
+          <li><%= booking.start_date %></li>
+          <li><%= booking.end_date %></li>
+          <li><%= booking.profile.first_name %></li>
+          <li><%= booking.price.fdiv 100 %> euros</li>
+          <li></li>
+        </ul>
+      <% end %>
 
+      </ul>
+    <% end %>
+  </div>
 </div>

@@ -5,8 +5,12 @@ class DashboardsController < ApplicationController
   end
 
   def myvehicles
+    @vehicles = current_user.profile.vehicles
+    authorize @vehicles
   end
 
   def myvehiclestobook
+    @vehicles = current_user.profile.vehicles
+    authorize @vehicles
   end
 end

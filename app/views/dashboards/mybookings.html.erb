@@ -1,18 +1,22 @@
 <div class="tabs">
-  <a class="tab active" href="#">
-    <h3>350</h3>
-    <p>Followers</p>
-  </a>
-  <a class="tab" href="#">
-    <h3>456</h3>
-    <p>Following</p>
-  </a>
-  <a class="tab" href="#">
-    <h3>189</h3>
-    <p>Upvoted</p>
-  </a>
-  <a class="tab" href="#">
-    <h3>13</h3>
-    <p>Submitted</p>
-  </a>
+  <%= link_to("My Bookings", dashboards_mybookings_path, class: "tab active")%>
+  <%= link_to("My Vehicles", dashboards_myvehicles_path, class: "tab")%>
+   <%= link_to("My Bookings Vehicle", dashboards_myvehiclestobook_path, class: "tab")%>
+</div>
+
+<div class="container">
+    <div>
+      <% @bookings.each do |booking|%>
+      <ul class="list-inline">
+        <li class="dates">From <%= booking.start_date %></li>
+        <li class="dates-end">To <%= booking.end_date %></li>
+        <li><%= booking.vehicle.name %></li>
+        <li><%= booking.profile.address_street %>, <%= booking.profile.address_zipcode %> <%= booking.profile.address_city %></li>
+        <li><%= booking.profile.first_name %></li>
+        <li><%= booking.price.fdiv 100 %></li>
+        <li><%= booking.status %></li>
+      </ul>
+      <hr>
+      <% end %>
+    </div>
 </div>

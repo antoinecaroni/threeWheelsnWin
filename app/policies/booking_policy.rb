@@ -10,6 +10,14 @@ class BookingPolicy < ApplicationPolicy
   def destroy?
   end
 
+  def mybookings?
+    true
+  end
+
+  def myvehiclestobook?
+    true
+  end
+
   class Scope < Scope
     def resolve
       scope.all

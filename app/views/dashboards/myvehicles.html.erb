@@ -1,8 +1,23 @@
 <div class="tabs">
-  <%= link_to("My Bookings", dashboards_mybookings_path, class: "tab" %>
-
+  <%= link_to("My Bookings", dashboards_mybookings_path, class: "tab")%>
   <%= link_to("My Vehicles", dashboards_myvehicles_path, class: "tab active")%>
+   <%= link_to("My Bookings Vehicle", dashboards_myvehiclestobook_path, class: "tab")%>
+</div>
 
-  <%= link_to("My Bookings Vehicle", dashboards_myvehiclestobook_path, class: "tab")%>
-
+<div class="container">
+  <div>
+      <% @vehicles.each do |vehicle|%>
+        <ul class="list-inline">
+          <li><%= cl_image_tag(vehicle.photo, height: 100, width: 120) %></li>
+          <li><%= vehicle.name %></li>
+          <li><%= vehicle.type.name %></li>
+          <li><%vehicle.seats.times do %>
+            <i class="fas fa-male"></i>
+            <% end %>
+          </li>
+          <li><%= vehicle.price.fdiv 100 %> euros </li>
+        </ul>
+      <hr>
+      <% end %>
+    </div>
 </div>
