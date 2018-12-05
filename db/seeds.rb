@@ -15,6 +15,7 @@ User.destroy_all
 Faker::Config.locale = 'fr'
 type_examples = ["Voiture", "Tricycle", "Side-car", "Scooter", "Trottinette", "Porteur pour bébé", "Char à Voiles", "Autre"]
 status = ["Pending", "Accepted", "Declined"]
+rue = ["boulevard de la liberté", "rue nationale", "rue royale", "boulevard Montebello", "rue colbert", "boulevard Vauban", "rue Solférino"]
 
 type_examples.each do |type|
   Type.create!(name: type)
@@ -26,33 +27,32 @@ while i < 10
   profile = Profile.create!(user: user,
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    address_street: Faker::Address.street_address,
-    address_city: Faker::Address.city,
-    address_zipcode: Faker::Address.zip_code,
+    address_street: "#{rand(1..200)} #{rue.sample}",
+    address_city: "Lille",
+    address_zipcode: "59000"
     )
   profile.remote_photo_url = "https://loremflickr.com/320/240/avatar/?rand=#{i}"
   p profile
   profile.save!
+  j = 1
+  vehicle = Vehicle.create!(name: Faker::Vehicle.make_and_model,
+    type: Type.all.sample,
+    price: rand(5000..50000),
+    description: Faker::Lorem.paragraphs,
+    profile: profile,
+    seats: rand(1...5),
+    address_street: profile.address_street,
+    address_city: profile.address_city,
+    address_zipcode: profile.address_zipcode
+    )
   2.times do
-    vehicle = Vehicle.create!(name: Faker::Vehicle.make_and_model,
-      type: Type.all.sample,
-      price: rand(5000..50000),
-      description: Faker::Lorem.paragraphs,
+    Booking.create!(start_date: "03/12/2018",
+      end_date: "10/12/2018",
       profile: profile,
-      seats: rand(1...5),
-      address_street: Faker::Address.street_address,
-      address_city: Faker::Address.city,
-      address_zipcode: Faker::Address.zip_code
+      vehicle: vehicle,
+      price: vehicle.price * 7,
+      status: status.sample
       )
-    2.times do
-      Booking.create!(start_date: "03/12/2018",
-        end_date: "10/12/2018",
-        profile: profile,
-        vehicle: vehicle,
-        price: vehicle.price * 7,
-        status: status.sample
-        )
-    end
   end
   i += 1
 end
