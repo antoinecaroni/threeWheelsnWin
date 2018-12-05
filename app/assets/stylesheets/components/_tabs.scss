@@ -1,18 +1,18 @@
 .tabs {
-  background: #53443F;
+  background: #F4F4F4;
   display: flex;
-  padding: 10px 10px 0 10px
+  padding: 10px 10px 0 10px;
+  justify-content: center
 }
 
 .tab {
-  background: #756A66;
+  background: #5C848E;
   flex: 0 0 25%;
   text-align: center;
   padding: 20px 0;
   color: white;
-  text-decoration: none;
   .hover {
-    color: white;
+    color: red;
   }
 }
 .tab:first-child {
@@ -22,6 +22,6 @@
   border-radius: 0 10px 0 0;
 }
 .tab.active {
-  background: white;
+  background: #D3D1CE;
   color: black;
 }

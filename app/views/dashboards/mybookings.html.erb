@@ -4,19 +4,28 @@
    <%= link_to("My Bookings Vehicle", dashboards_myvehiclestobook_path, class: "tab")%>
 </div>
 
-<div class="container">
-    <div>
-      <% @bookings.each do |booking|%>
-      <ul class="list-inline">
-        <li class="dates">From <%= booking.start_date %></li>
-        <li class="dates-end">To <%= booking.end_date %></li>
-        <li><%= booking.vehicle.name %></li>
-        <li><%= booking.profile.address_street %>, <%= booking.profile.address_zipcode %> <%= booking.profile.address_city %></li>
-        <li><%= booking.profile.first_name %></li>
-        <li><%= booking.price.fdiv 100 %></li>
-        <li><%= booking.status %></li>
-      </ul>
-      <hr>
-      <% end %>
+
+<% @bookings.each do |booking|%>
+  <div class="message">
+    <%= cl_image_tag(booking.profile.photo, height:50, width: 50, crop: :fill, class: "message-photo") %>
+
+    <div class="message-name">
+      <h3><%= booking.profile.first_name %></h3>
     </div>
-</div>
+    <div class="message-date">
+      <p>From <%= booking.start_date %></p>
+      <p>To <%= booking.end_date %></p>
+    </div>
+    <div class="message-vehicle">
+      <p><%= booking.vehicle.name %></p>
+    </div>
+    <div class="message-address">
+      <p><%= booking.profile.address_street %>, <%= booking.profile.address_zipcode %> <%= booking.profile.address_city %></p>
+    </div>
+    <div class="message-status">
+      <p><%= booking.status %></p>
+      <p class="price"><%= booking.price.fdiv 100 %> euros</p>
+    </div>
+  </div>
+<% end %>
+
