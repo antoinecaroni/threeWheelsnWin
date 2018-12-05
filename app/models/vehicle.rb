@@ -19,6 +19,12 @@ class Vehicle < ApplicationRecord
     [address_street, address_city, address_zipcode].join(', ')
   end
 
+  def booking_periods
+    self.bookings.accepted.map do |booking|
+      booking.start_date..booking.end_date
+    end
+  end
+
   private
 
   def change_to_address?

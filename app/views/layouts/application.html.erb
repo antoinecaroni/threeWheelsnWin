@@ -14,8 +14,6 @@
     <!-- app/views/layouts/application.html.erb -->
     <%= render 'shared/flashes' %>
     <%= yield %>
-    <%= javascript_include_tag 'application' %>
-    <%= javascript_pack_tag 'application' %>
     <% unless params[:action] == "show" && params[:controller] == 'vehicles' %>
       <%= render 'shared/footer' %>
     <% end %>
