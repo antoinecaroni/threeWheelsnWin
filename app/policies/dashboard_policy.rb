@@ -1,16 +1,9 @@
-class BookingPolicy < ApplicationPolicy
-  def new?
-    true
-  end
-
-  def create?
-    true
-  end
-
-  def destroy?
-  end
-
+class DashboardPolicy < ApplicationPolicy
   def mybookings?
+    true
+  end
+
+  def myvehicles?
     true
   end
 
