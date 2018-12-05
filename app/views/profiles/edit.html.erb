@@ -1,2 +1,13 @@
-<h1>Profiles#edit</h1>
-<p>Find me in app/views/profiles/edit.html.erb</p>
+<div class="container">
+  <div class="image-user">
+    <% if current_user.profile && current_user.profile.photo %>
+      <%= cl_image_tag current_user.profile.photo, crop: :fill, class: "avatar-small" %>
+    <% else %>
+      <%= image_tag "avatar.jpg", crop: :fill, class: "avatar-small" %>
+    <% end %>
+  </div>
+  <h1 class="text-center">Hi, <%= @profile.first_name %>!</h1>
+  <h2>Edit your profile here</h2>
+
+  <%= render "form_profile" %>
+</div>

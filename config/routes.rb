@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
 
-  get 'profiles/new'
-  get 'profiles/edit'
   resources :vehicles do
     resources :bookings, only: [:new, :create, :delete] do
       resources :reviews, only: :create
     end
   end
+  resources :profiles, except: :index
   get 'dashboards/mybookings'
   get 'dashboards/myvehicles'
   get 'dashboards/myvehiclestobook'

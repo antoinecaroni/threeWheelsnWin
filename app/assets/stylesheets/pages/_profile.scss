@@ -1,0 +1,10 @@
+.image-user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .avatar-small {
+    padding-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
