@@ -19,13 +19,13 @@
     <% if user_signed_in? %>
 
       <!-- Links when logged in -->
-      <%= link_to "Add a vehicle", new_vehicle_path, class: "navbar-wagon-item navbar-wagon-link" %>
-      <%= link_to "My Dashboard", "#", class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "<i class='fas fa-plus'></i> Add a vehicle".html_safe, new_vehicle_path, class: "navbar-wagon-item navbar-wagon-link" %>
+      <%= link_to "<i class='fas fa-tachometer-alt'></i> My Dashboard".html_safe, dashboards_mybookings_path, class: "navbar-wagon-item navbar-wagon-link" %>
 
       <!-- Avatar with dropdown menu -->
       <div class="navbar-wagon-item">
         <div class="dropdown">
-          <% if current_user.profile && current_user.profile.photo %>
+          <% if current_user.profile && current_user.profile.photo.file %>
             <%= cl_image_tag current_user.profile.photo, crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <% else %>
             <%= image_tag "avatar.jpg", crop: :fill, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
@@ -41,11 +41,6 @@
                 <%= link_to new_profile_path do %>
                   <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
                 <% end %>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to "#" do %>
-                <i class="fa fa-cog"></i>  <%= t(".settings", default: "Settings") %>
               <% end %>
             </li>
             <li>
@@ -67,9 +62,26 @@
     <div class="dropdown">
       <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
       <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-        <li><a href="#">Some mobile link</a></li>
-        <li><a href="#">Other one</a></li>
-        <li><a href="#">Other one</a></li>
+        <% if user_signed_in? %>
+          <% if current_user.profile %>
+            <li><%= link_to edit_profile_path(current_user.profile) do %>
+              <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+            <% end %></li>
+          <% else %>
+            <li><%= link_to new_profile_path do %>
+              <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+            <% end %></li>
+          <% end %>
+          <li><%= link_to "<i class='fas fa-plus'></i> Add a vehicle".html_safe, new_vehicle_path %></li>
+          <li><%= link_to "<i class='fas fa-tachometer-alt'></i> My Dashboard".html_safe, dashboards_mybookings_path %></li>
+          <li><%= link_to destroy_user_session_path, method: :delete do %>
+                <i class="fas fa-sign-out-alt"></i>  <%= t(".sign_out", default: "Log out") %>
+            <% end %></li>
+
+        <% else %>
+          <!-- Login link (when logged out) -->
+          <li><%= link_to t(".sign_in", default: "Login"), new_user_session_path %></li>
+        <% end %>
       </ul>
     </div>
   </div>

@@ -45,15 +45,13 @@ while i < 10
     address_city: profile.address_city,
     address_zipcode: profile.address_zipcode
     )
-  2.times do
-    Booking.create!(start_date: "03/12/2018",
-      end_date: "10/12/2018",
-      profile: profile,
-      vehicle: vehicle,
-      price: vehicle.price * 7,
-      status: status.sample
-      )
-  end
+  Booking.create!(start_date: "03/12/2018",
+    end_date: "10/12/2018",
+    profile: Profile.all.sample,
+    vehicle: vehicle,
+    price: vehicle.price * 7,
+    status: status.sample
+    )
   i += 1
 end
 
