@@ -4,21 +4,26 @@
    <%= link_to("My Bookings Vehicle", dashboards_myvehiclestobook_path, class: "tab active")%>
 </div>
 
-<div class="container">
-  <div>
-    <% @vehicles.each do |vehicle| %>
-      <h3><%= vehicle.name %></h3>
-      <% vehicle.bookings.each do |booking| %>
-        <ul class="list-inline">
-          <li><%= booking.start_date %></li>
-          <li><%= booking.end_date %></li>
-          <li><%= booking.profile.first_name %></li>
-          <li><%= booking.price.fdiv 100 %> euros</li>
-          <li></li>
-        </ul>
-      <% end %>
-
-      </ul>
+<div class="container-book">
+  <% @vehicles.each do |vehicle|%>
+    <% vehicle.bookings.each do |booking| %>
+      <div class="message-book">
+        <div class="message-car">
+          <h3><%= vehicle.name %></h3>
+        </div>
+        <div class="message-date">
+          <p>From <%= booking.start_date %></p>
+          <p>To <%= booking.end_date %></p>
+        </div>
+        <div class="message-name">
+          <h3><%= booking.profile.first_name %></h3>
+        </div>
+        <div class="message-status">
+          <p><%= booking.status %></p>
+          <p class="price"><%= booking.price.fdiv 100 %> euros</p>
+        </div>
+      </div>
     <% end %>
-  </div>
+  <% end %>
 </div>
+
