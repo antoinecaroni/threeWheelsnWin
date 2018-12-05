@@ -1,2 +1,8 @@
-<h1>Dashboards#myvehiclestobook</h1>
-<p>Find me in app/views/dashboards/myvehiclestobook.html.erb</p>
+<div class="tabs">
+  <%= link_to("My Bookings", dashboards_mybookings_path, class: "tab" %>
+
+  <%= link_to("My Vehicles", dashboards_myvehicles_path, class: "tab")%>
+
+  <%= link_to("My Bookings Vehicle", dashboards_myvehiclestobook_path, class: "tab active")%>
+
+</div>
