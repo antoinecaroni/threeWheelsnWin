@@ -34,7 +34,6 @@ while i < 10
   profile.remote_photo_url = "https://loremflickr.com/320/240/avatar/?rand=#{i}"
   p profile
   profile.save!
-  j = 1
   vehicle = Vehicle.create!(name: Faker::Vehicle.make_and_model,
     type: Type.all.sample,
     price: rand(5000..50000),
@@ -43,21 +42,18 @@ while i < 10
     seats: rand(1...5),
     address_street: profile.address_street,
     address_city: profile.address_city,
-    address_zipcode: profile.address_zipcode
-    )
-  Booking.create!(start_date: "03/12/2018",
-    end_date: "10/12/2018",
-    profile: Profile.all.sample,
-    vehicle: vehicle,
-    price: vehicle.price * 7,
-    status: status.sample
+    address_zipcode: profile.address_zipcode,
+    remote_photo_url: "https://loremflickr.com/1000/800/vehicle/?rand=#{i}"
     )
   i += 1
 end
 
-# Adding pictures to vehicles
-Vehicle.all.each_with_index do |vehicle, i|
-  vehicle.remote_photo_url = "https://loremflickr.com/1000/800/vehicle/?rand=#{i}"
-  vehicle.save!
-  p vehicle
+Vehicle.all.each do |vehicle|
+  Booking.create!(start_date: "03/12/2018",
+    end_date: "10/12/2018",
+    vehicle: vehicle,
+    profile: Profile.all.reject{ |p| p == vehicle.profile }.sample,
+    price: vehicle.price * 7,
+    status: status.sample
+    )
 end

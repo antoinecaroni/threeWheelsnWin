@@ -5,7 +5,6 @@ class VehiclesController < ApplicationController
 
   def index
     @vehicles = policy_scope(Vehicle).order(created_at: :desc).where.not(latitude: nil, longitude: nil)
-
     @markers = @vehicles.map do |vehicle|
       {
         lng: vehicle.longitude,

@@ -9,6 +9,7 @@
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= stylesheet_pack_tag "map" %>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   </head>
   <body>
     <%= render 'shared/navbar' %>
@@ -21,5 +22,9 @@
     <%= javascript_include_tag "application" %>
     <%= javascript_pack_tag 'application' %>
     <%= javascript_pack_tag "map" %>
+    <%= javascript_pack_tag "flatpickr" %>
+  </body>
+</html>
+
   </body>
 </html>
