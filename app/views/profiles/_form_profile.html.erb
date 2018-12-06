@@ -7,5 +7,13 @@
   <%= f.input :address_city %>
   <%= f.input :address_zipcode %>
   <%= f.button :submit %>
+  <%= button_tag type: 'submit' do %>
+    <i class="fas fa-check"></i>
+  <% end %>
+  <%= button_tag type: 'submit' do %>
+    <i class="fas fa-times"></i>
+  <% end %>
+
+
   <input type="text" name="url" value="<%= @url %>" hidden>
 <% end %>

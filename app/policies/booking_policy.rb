@@ -1,26 +1,22 @@
 class BookingPolicy < ApplicationPolicy
-  def new?
-    true
-  end
-
   def create?
     true
   end
 
   def destroy?
-    true
+    record.profile == user.profile
   end
 
   def update?
-    true
+    record.vehicle.profile == user.profile
   end
 
   def mybookings?
-    true
+    record.all? { |booking| booking.profile == user.profile }
   end
 
   def myvehiclestobook?
-    true
+    record.all? { |booking| booking.vehicle.profile == user.profile }
   end
 
   class Scope < Scope

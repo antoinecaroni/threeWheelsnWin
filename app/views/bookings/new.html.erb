@@ -1,3 +1,29 @@
-<div class="container">
+<div class="vehicle-picture" style="background-image: url(<%= cl_image_path @vehicle.photo, crop: :fill %>)">
+</div>
+<div class="container vehicle-container text-center">
+    <h1>Book now!</h1>
     <%= render 'form_booking', booking: @booking, vehicle: @vehicle %>
+    <% @booking.errors.each do |attr, msg| %>
+    <%= "#{attr} #{msg}" if @booking.errors[attr].first == msg %>
+    <% end %>
+    <div class="info-generales">
+      <h2><%= @vehicle.name %></h1>
+      <p><%= @vehicle.type.name %></p>
+      <p><% @vehicle.seats.times do %>
+        <i class="fas fa-male"></i>
+      <% end %>
+      <p><i class="fas fa-euro-sign"></i>  <%= @vehicle.price.fdiv 100 %> / day</p>
+      <p><%= @vehicle.description %></p>
+      <h3>Address:</h3>
+      <p><%= @vehicle.address_street %>, <%= @vehicle.address_zipcode %> <%= @vehicle.address_city %></p>
+    </div>
+</div>
+<div class="vehicle-map-container"
+  id="map"
+  style="width: 100%;
+  height: 50vh;
+  margin-top: 50px;
+  margin-bottom:-50px;"
+  data-markers="<%= @markers.to_json %>"
+  data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
 </div>
