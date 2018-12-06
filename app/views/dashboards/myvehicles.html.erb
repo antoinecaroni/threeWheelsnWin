@@ -41,17 +41,18 @@
               <p><%= booking.price.fdiv 100 %> euros</p>
             </div>
 
-                <!-- <a href="#<%= booking.id %>"><i class="far fa-check-square"></i></a> -->
-
               <%= simple_form_for [vehicle, booking] do |f| %>
                 <input type="text" name="status" value="Accepted" hidden />
-                <%= f.submit "Accept"%>
+                <%= button_tag type: 'submit' do %>
+                  <i class="fas fa-check"></i>
+                <% end %>
               <% end %>
 
-                <!-- <i class="far fa-times-circle"></i> -->
-             <%= simple_form_for [vehicle, booking] do |f| %>
+              <%= simple_form_for [vehicle, booking] do |f| %>
                 <input type="text" name="status" value="Declined" hidden />
-                <%= f.submit "Declined" %>
+                <%= button_tag type: 'submit' do %>
+                  <i class="fas fa-times"></i>
+                <% end %>
               <% end %>
           </div>
           <hr>
