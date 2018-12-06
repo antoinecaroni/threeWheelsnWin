@@ -1,5 +1,76 @@
-.container {
-  margin-top: 20px;
-  min-height: 420px;
+.container-vehicles {
+  min-height: calc(100vh - 320px);
+  border: 1px solid #dce0e0;
+  max-width: 900px;
+  margin: 50px auto;
+  margin-top: 0px auto;
 }
 
+.inbox {
+  background-color: #E9E9E9;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid rgba(220,224,244,0.4);
+}
+
+.message-name {
+  flex: 1 1 50px;
+  padding-left: 30px;
+  border-right: solid 1px lightgrey;
+  h3 {
+    font-size: 18px;
+  }
+  p {
+    font-size: 15px;
+    font-weight: light;
+  }
+}
+
+.message-seats {
+  padding-left: 30px;
+}
+
+.message-price {
+  flex: 1 1 50px;
+  padding-left: 20px;
+}
+
+.booking {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message-photo-book {
+  margin-left: 10px;
+  border-radius: 50%;
+}
+
+.booking-name h3{
+  flex: 0 0 20%;
+  font-size: 12px;
+  padding-left: 5px;
+}
+
+.booking-date {
+  flex: 1 1 auto;
+  max-width: 300px;
+  padding-left: 10%;
+  font-size: 12px;
+}
+
+.booking-status {
+  flex: 0 0 20%;
+  padding-right: 30px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.far {
+  padding-left: 20px;
+  color: grey;
+}

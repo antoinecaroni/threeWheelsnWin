@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :set_vehicle, only: [:new, :create]
+  before_action :set_vehicle, only: [:new, :create, :update]
 
   def new
     @booking = Booking.new
@@ -21,8 +21,25 @@ class BookingsController < ApplicationController
     end
   end
 
-  def delete
+  def update
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    if params[:status] == 'Accepted'
+      @booking.update(status: 'Accepted')
+    elsif params[:status] == 'Declined'
+      @booking.update(status: 'Declined')
+    end
+    redirect_to dashboards_myvehicles_path
   end
+
+  def destroy
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.delete
+    redirect_to dashboards_mybookings_path
+  end
+
+  private
 
   def set_params
     params.permit(
