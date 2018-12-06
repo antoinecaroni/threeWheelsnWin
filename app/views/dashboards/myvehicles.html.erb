@@ -22,18 +22,13 @@
             <i class="far fa-edit"></i>
           <% end %>
         </div>
-        <div>
-          <%= link_to dashboards_myvehicles_path do%>
-            <i class="far fa-trash-alt"></i>
-          <% end %>
-        </div>
         </li>
     </ul>
 
     <div class="container-book">
         <% vehicle.bookings.each do |booking| %>
           <div class="booking">
-            <%= cl_image_tag(booking.profile.photo, height: 50, width: 50, class: "message-photo") %>
+            <%= cl_image_tag(booking.profile.photo, height: 50, width: 50, class: "message-photo-book") %>
             <div class="booking-name">
               <h3><%= booking.profile.first_name %></h3>
             </div>
@@ -45,6 +40,19 @@
               <p><%= booking.status %></p>
               <p><%= booking.price.fdiv 100 %> euros</p>
             </div>
+
+                <!-- <a href="#<%= booking.id %>"><i class="far fa-check-square"></i></a> -->
+
+              <%= simple_form_for [vehicle, booking] do |f| %>
+                <input type="text" name="status" value="Accepted" hidden />
+                <%= f.submit "Accept"%>
+              <% end %>
+
+                <!-- <i class="far fa-times-circle"></i> -->
+             <%= simple_form_for [vehicle, booking] do |f| %>
+                <input type="text" name="status" value="Declined" hidden />
+                <%= f.submit "Declined" %>
+              <% end %>
           </div>
           <hr>
       <% end %>

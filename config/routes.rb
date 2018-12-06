@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   resources :vehicles, except: :destroy do
-    resources :bookings, only: [:new, :create, :destroy] do
+    resources :bookings, only: [:new, :create, :destroy, :update] do
       resources :reviews, only: :create
     end
   end

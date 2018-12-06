@@ -8,6 +8,11 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def destroy?
+    true
+  end
+
+  def update?
+    true
   end
 
   def mybookings?

@@ -7,9 +7,9 @@
 
   <% @bookings.each do |booking|%>
     <div class="book">
-      <%= cl_image_tag(booking.profile.photo, height:50, width: 50, crop: :fill, class: "message-photo") %>
+      <%= cl_image_tag(booking.vehicle.profile.photo, height:50, width: 50, crop: :fill, class: "message-photo") %>
       <div class="book-name">
-        <h3><%= booking.profile.first_name %></h3>
+        <h3><%= booking.vehicle.profile.first_name %></h3>
       </div>
       <div class="book-date">
         <p>From <%= booking.start_date %></p>
@@ -17,12 +17,15 @@
       </div>
       <div class="book-vehicle">
         <h2><%= booking.vehicle.name %></p>
-        <p><%= booking.profile.address_street %>, <%= booking.profile.address_zipcode %> <%= booking.profile.address_city %></p>
+        <p><%= booking.vehicle.profile.address_street %>, <%= booking.vehicle.profile.address_zipcode %> <%= booking.vehicle.profile.address_city %></p>
       </div>
       <div class="book-status">
         <p class="status"><%= booking.status %></p>
         <p class="price"><%= booking.price.fdiv 100 %> euros</p>
       </div>
+      <div>
+        <%= link_to 'delete', vehicle_booking_path(booking.vehicle, booking),  method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
     </div>
   <% end %>
 
