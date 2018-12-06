@@ -4,6 +4,13 @@ class BookingsController < ApplicationController
   def new
     @booking = Booking.new
     authorize @booking
+    @markers = [
+      {
+        lng: @vehicle.longitude,
+        lat: @vehicle.latitude,
+        infoWindow: { content: render_to_string(partial: "/vehicles/map_window", locals: { vehicle: @vehicle }) }
+      }
+    ]
   end
 
   def create
@@ -13,9 +20,8 @@ class BookingsController < ApplicationController
     @booking.price = ((@booking.end_date - @booking.start_date) * @vehicle.price).to_i
     @booking.profile = current_user.profile
     @booking.status = "Pending"
-    # fails
     if @booking.save
-      redirect_to vehicle_path(@vehicle)
+      redirect_to dashboards_mybookings_path
     else
       render :new
     end

@@ -36,7 +36,7 @@ class VehiclesController < ApplicationController
     @vehicle.price = @vehicle.price * 100
     @vehicle.profile = current_user.profile
     if @vehicle.save
-      redirect_to vehicles_path
+      redirect_to dashboards_myvehicles_path
     else
       render :new
     end
@@ -50,7 +50,7 @@ class VehiclesController < ApplicationController
     authorize @vehicle
     @vehicle.update(set_params)
     if @vehicle.save
-      redirect_to vehicle_path(@vehicle)
+      redirect_to dashboards_myvehicles_path
     else
       render :edit
     end

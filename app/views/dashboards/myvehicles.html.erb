@@ -40,20 +40,22 @@
               <p><%= booking.status %></p>
               <p><%= booking.price.fdiv 100 %> euros</p>
             </div>
-
+            <% if ["Pending", "Declined"].include?(booking.status) %>
               <%= simple_form_for [vehicle, booking] do |f| %>
                 <input type="text" name="status" value="Accepted" hidden />
                 <%= button_tag type: 'submit' do %>
                   <i class="fas fa-check"></i>
                 <% end %>
               <% end %>
-
+            <% end %>
+            <% if ["Pending", "Accepted"].include?(booking.status) %>
               <%= simple_form_for [vehicle, booking] do |f| %>
                 <input type="text" name="status" value="Declined" hidden />
                 <%= button_tag type: 'submit' do %>
                   <i class="fas fa-times"></i>
                 <% end %>
               <% end %>
+            <% end %>
           </div>
           <hr>
       <% end %>
