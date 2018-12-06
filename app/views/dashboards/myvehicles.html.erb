@@ -17,6 +17,16 @@
           <% end %>
         </div>
         <div class="message-price"><%= vehicle.price.fdiv 100 %> euros </div>
+        <div>
+          <%= link_to edit_vehicle_path(vehicle) do%>
+            <i class="far fa-edit"></i>
+          <% end %>
+        </div>
+        <div>
+          <%= link_to dashboards_myvehicles_path do%>
+            <i class="far fa-trash-alt"></i>
+          <% end %>
+        </div>
         </li>
     </ul>
 

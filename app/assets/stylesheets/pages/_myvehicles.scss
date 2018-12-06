@@ -1,5 +1,5 @@
 .container-vehicles {
-  min-height: calc(100vh - 280px);
+  min-height: calc(100vh - 320px);
   border: 1px solid #dce0e0;
   max-width: 900px;
   margin: 50px auto;
@@ -35,8 +35,6 @@
   padding-left: 20px;
 }
 
-
-
 .booking {
   display: flex;
   align-items: center;
@@ -57,4 +55,9 @@
   padding-left: 30px;
   font-size: 14px;
   font-weight: bold;
+}
+
+.far {
+  padding-left: 20px;
+  color: grey;
 }
