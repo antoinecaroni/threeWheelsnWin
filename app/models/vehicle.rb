@@ -4,6 +4,7 @@ class Vehicle < ApplicationRecord
   has_many :bookings
   has_many :reviews, through: :bookings
   validates :name, presence: true
+  validates :photo, presence: true
   validates :type_id, presence: true
   validates :price, presence: true, numericality: { only_integer: true }
   validates :profile_id, presence: true
@@ -23,6 +24,14 @@ class Vehicle < ApplicationRecord
     self.bookings.accepted.map do |booking|
       booking.start_date..booking.end_date
     end
+  end
+
+  def booking_dates
+    booking_dates = []
+    self.bookings.accepted.each do |booking|
+      (booking.start_date..booking.end_date).each { |date| booking_dates << date.to_s }
+    end
+    booking_dates
   end
 
   private

@@ -1,6 +1,5 @@
 <%= simple_form_for [vehicle, booking] do |f| %>
-  <%= f.input :start_date, as: :date, html5: true %>
-  <%= f.input :end_date, as: :date, html5: true %>
-
+  <input id="booking_start_date" name="start_date" placeholder="Start date" data-booking-dates="<%= vehicle.booking_dates %>">
+  <input id="booking_end_date" name="end_date" placeholder="End date" data-booking-dates="<%= vehicle.booking_dates %>">
   <%= f.submit "Book Now", class: "btn btn-primary" %>
 <% end %>
