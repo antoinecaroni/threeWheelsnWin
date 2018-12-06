@@ -2,8 +2,8 @@
 
   <div class="info">
     <div class="info-generales">
-      <h1><%= @vehicle.type.name %></h1>
-      <h2><%= @vehicle.name %></h2>
+      <h1><%= @vehicle.name %></h1>
+      <h2><%= @vehicle.type.name %></h2>
       <p><% @vehicle.seats.times do %>
         <i class="fas fa-male"></i>
       <% end %>
@@ -12,6 +12,9 @@
 
     <div class="info-photo">
       <%=cl_image_tag @vehicle.photo, height: 446 %>
+      <% if policy(@vehicle).update? %>
+        <div class="edit-icon"><%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_vehicle_path(@vehicle) %></div>
+      <% end %>
     </div>
   </div>
 

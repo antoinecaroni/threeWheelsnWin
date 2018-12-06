@@ -12,7 +12,7 @@ class VehiclePolicy < ApplicationPolicy
   end
 
   def update?
-    record.profile.user
+    record.profile.user == user
   end
 
   def myvehicles?

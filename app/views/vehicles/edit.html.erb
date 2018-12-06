@@ -1,2 +1,8 @@
-<h1>Vehicles#edit</h1>
-<p>Find me in app/views/vehicles/edit.html.erb</p>
+<div class="vehicle-picture" style="background-image: url(<%= cl_image_path @vehicle.photo, crop: :fill %>)">
+</div>
+<div class="container vehicle-container">
+  <h1 class="text-center">Hi, <%= current_user.profile.first_name %>!</h1>
+  <h2>Edit your vehicle here</h2>
+
+  <%= render "form_vehicle" %>
+</div>
