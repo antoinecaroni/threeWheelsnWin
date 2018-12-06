@@ -1,52 +1,54 @@
-.message {
+.container-bookings {
+  min-height: calc(100vh - 280px);
+  border: 1px solid #dce0e0;
+  padding: 0 20px;
+  max-width: 900px;
+  margin: 50px auto;
+}
+
+.book {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 20px;
   border-bottom: 1px solid rgba(220,224,244,0.4);
-  min-height: 220px;
 }
 
 .message-photo {
   border-radius: 50%;
 }
 
-.message-name {
+.book-name {
   padding-left: 15px;
   min-width: 100px;
   h3 {
-  font-size: 18px;
-  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
   }
 }
 
-.message-vehicle {
-  font-weight: bold;
+.book-vehicle {
+  min-width: 400px;
   padding-right: 20px;
   padding-left: 20px;
-  border-right: solid 1px lightgrey;
-  border-left: solid 1px lightgrey;
+  h2 {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  p {
+    font-size: 18px;
+    font-weight: lighter;
+  }
 }
-.message-date {
+.book-date {
   padding-right: 20px;
+  font-size: 12px;
+  min-width: 130px;
 }
 
-.message-address {
-  padding-left: 20px;
-}
-
-.message-status {
+.book-status {
   font-size: 14px;
   font-weight: bold;
   padding-left: 100px;
-}
-
-.status.accepted {
-  color: #04A366;
-}
-.status.declined {
-  color: red;
-}
-.status.pending {
-  color: lightgrey;
+  min-width: 200px
 }

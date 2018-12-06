@@ -1,31 +1,30 @@
 <div class="tabs">
   <%= link_to("My Bookings", dashboards_mybookings_path, class: "tab active")%>
   <%= link_to("My Vehicles", dashboards_myvehicles_path, class: "tab")%>
-   <%= link_to("My Bookings Vehicle", dashboards_myvehiclestobook_path, class: "tab")%>
 </div>
 
+<div class="container-bookings">
 
-<% @bookings.each do |booking|%>
-  <div class="message">
-    <%= cl_image_tag(booking.profile.photo, height:50, width: 50, crop: :fill, class: "message-photo") %>
+  <% @bookings.each do |booking|%>
+    <div class="book">
+      <%= cl_image_tag(booking.profile.photo, height:50, width: 50, crop: :fill, class: "message-photo") %>
+      <div class="book-name">
+        <h3><%= booking.profile.first_name %></h3>
+      </div>
+      <div class="book-date">
+        <p>From <%= booking.start_date %></p>
+        <p>To <%= booking.end_date %></p>
+      </div>
+      <div class="book-vehicle">
+        <h2><%= booking.vehicle.name %></p>
+        <p><%= booking.profile.address_street %>, <%= booking.profile.address_zipcode %> <%= booking.profile.address_city %></p>
+      </div>
+      <div class="book-status">
+        <p class="status"><%= booking.status %></p>
+        <p class="price"><%= booking.price.fdiv 100 %> euros</p>
+      </div>
+    </div>
+  <% end %>
 
-    <div class="message-name">
-      <h3><%= booking.profile.first_name %></h3>
-    </div>
-    <div class="message-date">
-      <p>From <%= booking.start_date %></p>
-      <p>To <%= booking.end_date %></p>
-    </div>
-    <div class="message-vehicle">
-      <p><%= booking.vehicle.name %></p>
-    </div>
-    <div class="message-address">
-      <p><%= booking.profile.address_street %>, <%= booking.profile.address_zipcode %> <%= booking.profile.address_city %></p>
-    </div>
-    <div class="message-status">
-      <p><%= booking.status %></p>
-      <p class="price"><%= booking.price.fdiv 100 %> euros</p>
-    </div>
-  </div>
-<% end %>
+</div>
 
