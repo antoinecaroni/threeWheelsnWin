@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :vehicles do
+  resources :vehicles, except: :delete do
     resources :bookings, only: [:new, :create, :delete] do
       resources :reviews, only: :create
     end

@@ -1,7 +1,7 @@
 class VehiclesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
   skip_before_action :check_profile, only: :index
-  before_action :set_vehicle, only: :show
+  before_action :set_vehicle, only: [:show, :edit, :update]
 
   def index
     @vehicles = policy_scope(Vehicle).order(created_at: :desc).where.not(latitude: nil, longitude: nil)
@@ -44,14 +44,17 @@ class VehiclesController < ApplicationController
   end
 
   def edit
-    # authorize @vehicle
+    authorize @vehicle
   end
 
   def update
-    # authorize @vehicle
-  end
-
-  def delete
+    authorize @vehicle
+    @vehicle.update(set_params)
+    if @vehicle.save
+      redirect_to vehicle_path(@vehicle)
+    else
+      render :edit
+    end
   end
 
   private

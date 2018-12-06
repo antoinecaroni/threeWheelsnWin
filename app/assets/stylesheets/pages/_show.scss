@@ -13,6 +13,20 @@
   .info-photo {
 
     margin-left: 10px;
+    position: relative;
+    .edit-icon {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+    }
+  }
+  a {
+    color: white;
+    font-size: 30px;
+    &:hover {
+      color: #E67E22;
+      text-decoration: none;
+    }
   }
 }
 
