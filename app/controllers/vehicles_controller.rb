@@ -53,8 +53,7 @@ class VehiclesController < ApplicationController
 
   def update
     authorize @vehicle
-    @vehicle.update(set_params)
-    if @vehicle.save
+    if @vehicle.update(set_params)
       redirect_to dashboards_myvehicles_path
     else
       render :edit
