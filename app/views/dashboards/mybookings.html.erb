@@ -5,38 +5,45 @@
 
 <div class="container-bookings">
 
-  <% @bookings.each do |booking|%>
-    <div class="book">
-      <%= cl_image_tag(booking.vehicle.profile.photo, height:50, width: 50, crop: :fill, class: "message-photo") %>
-      <div class="book-name">
-        <h3><%= booking.vehicle.profile.first_name %></h3>
+  <% if @bookings.blank? %>
+      <div class="blank-bookings">
+        <p>You don't have any bookings yet</p>
+        <%= link_to("Look at the vehicles", vehicles_path, class: "btn btn-success") %>
       </div>
-      <div class="book-date">
-        <p>From <%= booking.start_date %></p>
-        <p>To <%= booking.end_date %></p>
-      </div>
-      <div class="book-vehicle">
-        <h2><%= booking.vehicle.name %></p>
-        <p><%= booking.vehicle.profile.address_street %>, <%= booking.vehicle.profile.address_zipcode %> <%= booking.vehicle.profile.address_city %></p>
-      </div>
-      <div class="book-status">
-        <p class="status"><%= booking.status %></p>
-        <p class="price"><%= booking.price.fdiv 100 %> euros</p>
-      </div>
-      <div>
-        <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, vehicle_booking_path(booking.vehicle, booking),  method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% else %>
+    <% @bookings.each do |booking|%>
+      <div class="book">
+        <%= cl_image_tag(booking.vehicle.profile.photo, height:50, width: 50, crop: :fill, class: "message-photo") %>
+        <div class="book-name">
+          <h3><%= booking.vehicle.profile.first_name %></h3>
         </div>
-    </div>
-    <% if booking.possible_to_review? %>
-      <div class="book-review">
-        <% if booking.review %>
-          <p>You have reviewed this booking on <%= booking.review.created_at %></p>
-          <p><%= booking.review.rating %> / 5</p>
-          <p><%= booking.review.content %></p>
-        <% else %>
-          <%= render '/reviews/form_review', booking: booking, review: @review %>
-        <% end %>
+        <div class="book-date">
+          <p>From <%= booking.start_date %></p>
+          <p>To <%= booking.end_date %></p>
+        </div>
+        <div class="book-vehicle">
+          <h2><%= booking.vehicle.name %></p>
+          <p><%= booking.vehicle.profile.address_street %>, <%= booking.vehicle.profile.address_zipcode %> <%= booking.vehicle.profile.address_city %></p>
+        </div>
+        <div class="book-status">
+          <p class="status"><%= booking.status %></p>
+          <p class="price"><%= booking.price.fdiv 100 %> euros</p>
+        </div>
+        <div>
+          <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, vehicle_booking_path(booking.vehicle, booking),  method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
       </div>
+      <% if booking.possible_to_review? %>
+        <div class="book-review">
+          <% if booking.review %>
+            <p>You have reviewed this booking on <%= booking.review.created_at %></p>
+            <p><%= booking.review.rating %> / 5</p>
+            <p><%= booking.review.content %></p>
+          <% else %>
+            <%= render '/reviews/form_review', booking: booking, review: @review %>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 

@@ -1,10 +1,19 @@
+body {
+  color: #484848;
+}
+
 .container-vehicles {
-  min-height: calc(100vh - 320px);
+  min-height: calc(100vh - 280px);
   border: 1px solid #dce0e0;
   max-width: 900px;
   margin: 50px auto;
   margin-top: 0px auto;
 }
+
+.blank-vehicles {
+    text-align: center;
+    margin-top: 25%;
+  }
 
 .inbox {
   background-color: #E9E9E9;
@@ -28,6 +37,10 @@
     font-size: 15px;
     font-weight: light;
   }
+}
+
+.vehicle-link a{
+  color: #484848;
 }
 
 .message-seats {

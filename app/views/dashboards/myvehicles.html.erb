@@ -4,63 +4,74 @@
 </div>
 
 <div class="container-vehicles">
-  <% @vehicles.each do |vehicle|%>
-    <ul class="inbox">
-      <li class="message">
-        <%= cl_image_tag(vehicle.photo, height: 80, width: 100) %>
-        <div class="message-name">
-          <h3><%= vehicle.name %></h3>
-          <p><%= vehicle.type.name %></p>
-        </div>
-        <div class="message-seats"><%vehicle.seats.times do %>
-          <i class="fas fa-male"></i>
-          <% end %>
-        </div>
-        <div class="message-price"><%= vehicle.price.fdiv 100 %> euros </div>
-        <div>
-          <%= link_to edit_vehicle_path(vehicle) do%>
-            <i class="far fa-edit"></i>
-          <% end %>
-        </div>
-        </li>
-    </ul>
-
-    <div class="container-book">
-        <% vehicle.bookings.each do |booking| %>
-          <div class="booking">
-            <%= cl_image_tag(booking.profile.photo, height: 50, width: 50, class: "message-photo-book") %>
-            <div class="booking-name">
-              <h3><%= booking.profile.first_name %></h3>
-            </div>
-            <div class="booking-date">
-              <p>From <%= booking.start_date %></p>
-              <p>To <%= booking.end_date %></p>
-            </div>
-            <div class="booking-status">
-              <p><%= booking.status %></p>
-              <p><%= booking.price.fdiv 100 %> euros</p>
-            </div>
-            <% if ["Pending", "Declined"].include?(booking.status) %>
-              <%= simple_form_for [vehicle, booking] do |f| %>
-                <input type="text" name="status" value="Accepted" hidden />
-                <%= button_tag type: 'submit' do %>
-                  <i class="fas fa-check"></i>
-                <% end %>
-              <% end %>
+  <% if @vehicles.blank? %>
+    <div class="blank-bookings">
+        <p>You don't have any vehicles yet</p>
+        <%= link_to("Add a vehicle", new_vehicle_path, class: "btn btn-success") %>
+      </div>
+  <% else %>
+    <% @vehicles.each do |vehicle|%>
+      <ul class="inbox">
+        <li class="message">
+          <%= cl_image_tag(vehicle.photo, height: 80, width: 100) %>
+          <div class="message-name">
+            <div class="vehicle-link">
+            <%= link_to vehicle_path(vehicle) do%>
+              <%= vehicle.name %>
             <% end %>
-            <% if ["Pending", "Accepted"].include?(booking.status) %>
-              <%= simple_form_for [vehicle, booking] do |f| %>
-                <input type="text" name="status" value="Declined" hidden />
-                <%= button_tag type: 'submit' do %>
-                  <i class="fas fa-times"></i>
-                <% end %>
-              <% end %>
+            </div>
+            <p><%= vehicle.type.name %></p>
+          </div>
+          <div class="message-seats"><%vehicle.seats.times do %>
+            <i class="fas fa-male"></i>
             <% end %>
           </div>
-          <hr>
-      <% end %>
-    </div>
+          <div class="message-price"><%= vehicle.price.fdiv 100 %> euros </div>
+          <div>
+            <%= link_to edit_vehicle_path(vehicle) do%>
+              <i class="far fa-edit"></i>
+            <% end %>
+          </div>
+          </li>
+      </ul>
 
+      <div class="container-book">
+          <% vehicle.bookings.each do |booking| %>
+            <div class="booking">
+              <%= cl_image_tag(booking.profile.photo, height: 50, width: 50, class: "message-photo-book") %>
+              <div class="booking-name">
+                <h3><%= booking.profile.first_name %></h3>
+              </div>
+              <div class="booking-date">
+                <p>From <%= booking.start_date %></p>
+                <p>To <%= booking.end_date %></p>
+              </div>
+              <div class="booking-status">
+                <p><%= booking.status %></p>
+                <p><%= booking.price.fdiv 100 %> euros</p>
+              </div>
+              <% if ["Pending", "Declined"].include?(booking.status) %>
+                <%= simple_form_for [vehicle, booking] do |f| %>
+                  <input type="text" name="status" value="Accepted" hidden />
+                  <%= button_tag type: 'submit' do %>
+                    <i class="fas fa-check"></i>
+                  <% end %>
+                <% end %>
+              <% end %>
+              <% if ["Pending", "Accepted"].include?(booking.status) %>
+                <%= simple_form_for [vehicle, booking] do |f| %>
+                  <input type="text" name="status" value="Declined" hidden />
+                  <%= button_tag type: 'submit' do %>
+                    <i class="fas fa-times"></i>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </div>
+            <hr>
+        <% end %>
+      </div>
+
+    <% end %>
   <% end %>
 </div>
 
