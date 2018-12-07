@@ -38,7 +38,7 @@ class VehiclesController < ApplicationController
   def create
     @vehicle = Vehicle.new(set_params)
     authorize @vehicle
-    @vehicle.price = @vehicle.price * 100
+    @vehicle.price = @vehicle.price * 100 if @vehicle.price
     @vehicle.profile = current_user.profile
     if @vehicle.save
       redirect_to dashboards_myvehicles_path
