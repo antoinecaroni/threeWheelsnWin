@@ -1,7 +1,10 @@
 class ReviewPolicy < ApplicationPolicy
-  def create?
-    # record.booking.profile == current_user.profile && record.booking.status == "Accepted"
+  def mybookings?
     true
+  end
+
+  def create?
+    record.booking.profile == user.profile && record.booking.status == "Accepted" && record.booking.end_date < Date.today
   end
 
   class Scope < Scope

@@ -31,8 +31,19 @@
         </div>
         <div>
           <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, vehicle_booking_path(booking.vehicle, booking),  method: :delete, data: { confirm: 'Are you sure?' } %>
-          </div>
+        </div>
       </div>
+      <% if booking.possible_to_review? %>
+        <div class="book-review">
+          <% if booking.review %>
+            <p>You have reviewed this booking on <%= booking.review.created_at %></p>
+            <p><%= booking.review.rating %> / 5</p>
+            <p><%= booking.review.content %></p>
+          <% else %>
+            <%= render '/reviews/form_review', booking: booking, review: @review %>
+          <% end %>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 

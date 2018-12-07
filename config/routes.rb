@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
   resources :vehicles, except: :destroy do
-    resources :bookings, only: [:new, :create, :destroy, :update] do
-      resources :reviews, only: :create
-    end
+    resources :bookings, only: [:new, :create, :destroy, :update]
+  end
+  resources :bookings, only: [] do
+    resources :reviews, only: :create
   end
   resources :profiles, except: :index
   get 'dashboards/mybookings'

@@ -4,10 +4,12 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.booking = @booking
+    authorize @review
+    @bookings = current_user.profile.bookings
     if @review.save
-      redirect_to booking_path(@booking)
+      redirect_to dashboards_mybookings_path
     else
-      render 'vehicles/show'
+      render 'dashboards/mybookings'
     end
   end
 
@@ -15,7 +17,7 @@ class ReviewsController < ApplicationController
   # Private Methods below
 
   def set_booking
-    @booking = booking.find(params[:booking_id])
+    @booking = Booking.find(params[:booking_id])
   end
 
   def review_params
