@@ -82,6 +82,13 @@
   border-radius: 50%;
 }
 
+.card-user {
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  color: $orange;
+  font-size: 40px;
+}
 
 .controls a {
   padding: 5px;
