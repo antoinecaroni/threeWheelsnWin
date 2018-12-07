@@ -4,8 +4,13 @@ class VehiclesController < ApplicationController
   before_action :set_vehicle, only: [:show, :edit, :update]
 
   def index
-    @vehicles = policy_scope(Vehicle).order(created_at: :desc).where.not(latitude: nil, longitude: nil)
-    @markers = @vehicles.map do |vehicle|
+    if params[:query].present?
+      @vehicles = policy_scope(Vehicle).search_vehicles(params[:query]).order(created_at: :desc)
+    else
+      @vehicles = policy_scope(Vehicle).order(created_at: :desc)
+    end
+
+    @markers = @vehicles.where.not(latitude: nil, longitude: nil).map do |vehicle|
       {
         lng: vehicle.longitude,
         lat: vehicle.latitude,

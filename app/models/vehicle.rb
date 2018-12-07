@@ -15,6 +15,16 @@ class Vehicle < ApplicationRecord
   mount_uploader :photo, PhotoUploader
   geocoded_by :address
   after_validation :geocode, if: :change_to_address?
+  include PgSearch
+  pg_search_scope :search_vehicles,
+    against: [ :name, :description ],
+    associated_against: {
+      type: [ :name ]
+    },
+    using: {
+      tsearch: { prefix: true }
+    }
+
 
   def address
     [address_street, address_city, address_zipcode].join(', ')
