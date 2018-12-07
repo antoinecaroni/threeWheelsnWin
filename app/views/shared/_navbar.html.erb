@@ -6,10 +6,13 @@
 
   <div class="navbar-wagon-middle">
     <div class="search-form">
-      <form action="/vehicles" class="form-inline">
-        <input type="text" name="vehicle" placeholder="Vehicle to search" class="form-control">
-        <input type="submit" value="Search" class="btn btn-warning hidden">
-      </form>
+      <%= form_tag vehicles_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Find a vehicle"
+        %>
+      <% end %>
     </div>
   </div>
 

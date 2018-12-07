@@ -9,7 +9,9 @@
 <div class="container-index">
   <h1> Three wheels, what else? </h1>
   <div class="row">
-
+    <% if @vehicles.blank? %>
+      <p class="text-center">No results found for the search on keyword "<%= params[:query] %>"</p>
+    <% end %>
     <% @vehicles.each do |vehicle| %>
       <div class="col-xs-12 col-sm-4">
         <div class="card-container">
