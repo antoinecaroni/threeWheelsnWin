@@ -24,7 +24,7 @@
       <p><%= @vehicle.description %></p>
       <div class="details-car">
         <p><%= @vehicle.price.fdiv 100 %> euros</h4>
-        <p><%= @vehicle.seats %> seat(s)</h4>
+        <p><%= @vehicle.seats %> <%= "seat".pluralize(@vehicle.seats) %></h4>
       </div>
     </div>
 
@@ -53,7 +53,11 @@
     <div class="footer-price">
       <h3><%= @vehicle.price.fdiv 100 %> euros/days</h3>
     </div>
-    <%= link_to("Book me", new_vehicle_booking_path(@vehicle), class: "btn btn-success btn-lg")%>
+    <% if current_user.profile.vehicles.include? @vehicle %>
+      <%= link_to("See all my vehicles", dashboards_myvehicles_path, class: "btn btn-warning btn-lg")%>
+    <% else %>
+      <%= link_to("Book me", new_vehicle_booking_path(@vehicle), class: "btn btn-success btn-lg")%>
+    <% end %>
   </div>
 </div>
 
