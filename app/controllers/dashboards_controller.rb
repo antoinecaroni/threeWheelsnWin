@@ -1,6 +1,8 @@
 class DashboardsController < ApplicationController
   def mybookings
     @bookings = current_user.profile.bookings
+    @review = Review.new
+    authorize @review
     authorize @bookings
   end
 

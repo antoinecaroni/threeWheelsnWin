@@ -17,7 +17,9 @@ class BookingsController < ApplicationController
     @booking = Booking.new(set_params)
     authorize @booking
     @booking.vehicle = @vehicle
-    @booking.price = ((@booking.end_date - @booking.start_date) * @vehicle.price).to_i
+    unless @booking.end_date.blank? || @booking.start_date.blank?
+      @booking.price = ((@booking.end_date - @booking.start_date) * @vehicle.price).to_i
+    end
     @booking.profile = current_user.profile
     @booking.status = "Pending"
     if @booking.save
