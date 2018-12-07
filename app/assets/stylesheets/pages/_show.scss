@@ -1,5 +1,5 @@
 .car {
-  margin-bottom: 100px;
+  margin-bottom: 60px;
 }
 .car .info {
   display: flex;
@@ -8,10 +8,16 @@
   .info-generales {
     background-color: #E9E9E9;
     padding: 100px;
-    margin-right: 10px
+    margin-right: 10px;
+    h1 {
+      color: #484848;
+    }
+    h2 {
+      color: #484848;
+    }
   }
-  .info-photo {
 
+  .info-photo {
     margin-left: 10px;
     position: relative;
     .edit-icon {
@@ -47,11 +53,13 @@
   justify-content: space-around;
   margin: 10px auto;
   .carac {
-    margin-right: 10px;
+    color: #484848;
+    font-size: 16px;
     .details-car {
+      flex: 1 1 60%;
       display: flex;
       justify-content: space-around;
-      h4 {
+      p {
         font-weight: bolder;
       }
 
@@ -59,9 +67,10 @@
   }
   .user-profile-car {
     display: flex;
-    justify-content: center;
+    flex: 1 0 150px;
+    color: #484848;
+    justify-content: space-around;
     align-items: center;
-    padding-left: 30px;
     margin-left: 10px;
     border-left: solid 1px lightgrey
   }
