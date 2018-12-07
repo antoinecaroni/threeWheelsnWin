@@ -8,17 +8,20 @@ if (document.getElementById('address-input')) {
     container: document.getElementById('address-input'),
     templates: {
       value: function(suggestion) {
-        return suggestion;
+        return suggestion.name +', ' + suggestion.city;
       }
     }
   }).configure({
     type: 'address'
   });
   placesAutocomplete.on('change', function resultSelected(e) {
-    document.getElementById('address-input').value = e.suggestion.value || '';
-    document.getElementById("profile_address_street").value = e.suggestion.name || '';
-    document.getElementById("profile_address_city").value = e.suggestion.city || '';
-    document.getElementById("profile_address_zipcode").value = e.suggestion.postcode || '';
+    if (document.getElementById("profile_address_street")) {document.getElementById("profile_address_street").value = e.suggestion.name || '';}
+    if (document.getElementById("profile_address_city")) {document.getElementById("profile_address_city").value = e.suggestion.city || '';}
+    if (document.getElementById("profile_address_zipcode")) {document.getElementById("profile_address_zipcode").value = e.suggestion.postcode || '';}
+    if (document.getElementById("vehicle_address_street")) {document.getElementById("vehicle_address_street").value = e.suggestion.name || '';}
+    if (document.getElementById("vehicle_address_city")) {document.getElementById("vehicle_address_city").value = e.suggestion.city || '';}
+    if (document.getElementById("vehicle_address_zipcode")) {document.getElementById("vehicle_address_zipcode").value = e.suggestion.postcode || '';}
+
   });
 })();
 }
