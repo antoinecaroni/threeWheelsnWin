@@ -34,7 +34,9 @@
             <p class="price"><%= booking.price.fdiv 100 %> euros</p>
           </div>
           <div>
-            <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, vehicle_booking_path(booking.vehicle, booking),  method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% if booking.status == "Pending" %>
+              <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, vehicle_booking_path(booking.vehicle, booking),  method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
           </div>
         </li>
       </ul>
