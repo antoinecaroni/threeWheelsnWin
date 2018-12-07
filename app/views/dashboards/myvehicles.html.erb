@@ -6,20 +6,20 @@
 <div class="container-vehicles">
   <% if @vehicles.blank? %>
     <div class="blank-bookings">
-        <p>You don't have any vehicles yet</p>
-        <%= link_to("Add a vehicle", new_vehicle_path, class: "btn btn-success") %>
-      </div>
+      <p>You don't have any vehicles yet</p>
+      <%= link_to("Add a vehicle", new_vehicle_path, class: "btn btn-success") %>
+    </div>
   <% else %>
     <% @vehicles.each do |vehicle|%>
       <ul class="inbox">
         <li class="message">
           <%= cl_image_tag(vehicle.photo, height: 80, width: 100) %>
           <div class="message-name">
-            <div class="vehicle-link">
+          <div class="vehicle-link">
             <%= link_to vehicle_path(vehicle) do%>
               <%= vehicle.name %>
             <% end %>
-            </div>
+          </div>
             <p><%= vehicle.type.name %></p>
           </div>
           <div class="message-seats"><%vehicle.seats.times do %>
@@ -32,7 +32,7 @@
               <i class="far fa-edit"></i>
             <% end %>
           </div>
-          </li>
+        </li>
       </ul>
 
       <div class="container-book">
