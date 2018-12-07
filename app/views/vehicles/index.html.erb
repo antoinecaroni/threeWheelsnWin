@@ -19,7 +19,7 @@
             <div class="card-body" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.2)), url(<%= vehicle.photo %>);">
               <%= cl_image_tag vehicle.profile.photo, class: "card-avatar" %>
               <%= link_to("", vehicle_path(vehicle), class: "card-link")%>
-              <%  if current_user && current_user.profile && current_user.profile.vehicles.include? vehicle  %>
+              <%  if current_user && current_user.profile && current_user.profile.vehicles.include?(vehicle)  %>
                 <div class="card-user"><i class="fas fa-car"></i></div>
               <% end %>
             </div>
