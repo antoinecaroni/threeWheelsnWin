@@ -1,7 +1,6 @@
 .container-bookings {
   min-height: calc(100vh - 280px);
   border: 1px solid #dce0e0;
-  padding: 0 20px;
   max-width: 900px;
   margin: 0px auto 50px auto;
 }
@@ -12,10 +11,13 @@
 
 }
 
+.book-box {
+  background: #E5E5E5;
+}
+
 .book {
   display: flex;
   align-items: center;
-  justify-content: center;
   padding: 20px;
   border-bottom: 1px solid rgba(220,224,244,0.4);
 }
@@ -44,13 +46,9 @@
 .book-vehicle {
   flex: 1 1 25%;
   min-width: 70px;
-  h2 {
-    font-size: 18px;
-    font-weight: bold;
-  }
   p {
     font-size: 18px;
-    font-weight: lighter;
+    font-weight: bold;
   }
 }
 
@@ -61,3 +59,21 @@
   padding-left: 100px;
   min-width: 200px
 }
+
+.book-review {
+  text-align: center;
+  .date-review {
+    font-size: 14px;
+    font-weight: lighter;
+  }
+  .content-review {
+    font-size: 14px;
+    margin-left: 25%;
+    margin-right: 25%;
+  }
+  .rating-review {
+    font-size: 14px;
+    font-weight: bolder
+  }
+}
+

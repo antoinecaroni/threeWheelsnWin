@@ -6,8 +6,7 @@ body {
   min-height: calc(100vh - 280px);
   border: 1px solid #dce0e0;
   max-width: 900px;
-  margin: 50px auto;
-  margin-top: 0px auto;
+  margin: 0px auto 50px auto;
 }
 
 .blank-vehicles {
@@ -16,7 +15,7 @@ body {
   }
 
 .inbox {
-  background-color: #E9E9E9;
+  background: #E5E5E5;
 }
 
 .message {
