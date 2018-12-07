@@ -1,3 +1,4 @@
+import 'flatpickr/dist/flatpickr.css'
 import flatpickr from "flatpickr";
 
 const start_date = document.getElementById("booking_start_date")
